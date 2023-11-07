@@ -1,0 +1,46 @@
+{{ define "content"}}
+<div class="res-cons">
+    {{ partial "toc" . }}
+    <article class="post">
+        <header>
+            <h1 class="post-title">{{ .Title }}</h1>
+        </header>
+        {{ partial "post-meta.html" . }}
+        {{ if .Site.Params.busuanzi }}
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">&nbsp;|
+                <span id="busuanzi_value_page_pv"></span> <span>{{ i18n "busuanzi" }}</span>
+            </span>
+        </div>
+        {{ end }}
+        {{ if .Params.toc }}
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">{{ i18n "toc" }}</div>
+            </div>
+        </div>
+        {{ end }}
+        <div class="post-content">
+            {{ .Content }}
+        </div>
+<h4 align="center">捐赠本站(Donate)</h4>
+<p  align="center"><a href="https://blog.361way.com/wp-content/uploads/juanzheng/donation.png"><img class="alignnone" src="https://blog.361way.com/wp-content/uploads/juanzheng/donation-mini.png" alt="weixin_pay" /></a></br>如您感觉文章有用，可扫码捐赠本站！(If the article useful, you can scan the QR code to donate))</p>
+        {{ partial "copyright" .}}
+
+        {{ partial "related" . }}
+
+        <div class="post-meta meta-tags">
+            {{ if and (isset .Params "tags") .Params.tags }}
+            <ul class="clearfix">
+                {{ range .Params.Tags }}
+                <li><a href='{{ "tags/" | relURL }}{{ . | urlize }}' target="_blank">{{ . }}</a></li>
+                {{ end }}
+            </ul>
+            {{ else }}
+            {{ i18n "tagsNone" }}
+            {{ end }}
+        </div>
+    </article>
+    {{ partial "comments" . }}
+</div>
+{{ end }}
