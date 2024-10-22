@@ -1,11 +1,6 @@
 <!doctype html>
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}zh-CN{{end}}">
 {{ partial "head" . }}
-  <!-- 引入 Mermaid.js -->
-  <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true });
-  </script>
 <body>
     {{ partial "header" . }}
     <div id="body">
